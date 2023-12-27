@@ -1,0 +1,12 @@
+<wxs module="util" src="../util.wxs" />
+
+<view class="container">
+  <view class="waterfall-list">
+    <block wx:for="{{shows}}" wx:key="index">
+      <view class="waterfall-item">
+        <image class="photo-item" src="{{item}}" data-ix="{{item}}" mode="aspectFill" bindtap="previewImage"></image>
+      </view>
+    </block>
+  </view>
+</view>
+

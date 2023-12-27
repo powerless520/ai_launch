@@ -1,0 +1,30 @@
+/* pages/index/index.wxss */
+
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+.waterfall-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.waterfall-item {
+  margin: 6px;
+  position: relative;
+}
+
+.photo-item {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  /*overflow: hidden;*/
+}
+
+.photo-item:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%; /* 1:1 Aspect Ratio */
+}

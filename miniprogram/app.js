@@ -4,7 +4,7 @@ App({
 
     this.globalData = {
       // 用于存储待办记录的集合名称
-      collection: 'todo',
+      collection: 'ai_launch',
       // 最大文件上传数量
       fileLimit: 2
     }
@@ -83,7 +83,7 @@ App({
       name: 'getOpenId'
     }).catch(e => {
       let flag = e.toString()
-      flag = flag.indexOf('FunctionName') == -1 ? flag : '请在cloudfunctions文件夹中getOpenId上右键，创建部署云端安装依赖，然后再次体验'
+      flag = flag.indexOf('FunctionName') === -1 ? flag : '请在cloudfunctions文件夹中getOpenId上右键，创建部署云端安装依赖，然后再次体验'
       wx.hideLoading()
       wx.showModal({
         content: flag, // 此提示可以在正式时改为 "网络服务异常，请确认网络重新尝试！"

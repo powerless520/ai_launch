@@ -1,12 +1,9 @@
-/* 待办列表首页 */
+/* 展示首页 */
 
 Page({
   // 存储请求结果
   data: {
-    todos: [], // 用户的所有待办事项
-    pending: [], // 未完成待办事项
-    finished: [], // 已完成待办事项
-    content:[]
+    shows:[]
   },
 
   onShow() {
@@ -17,16 +14,14 @@ Page({
       db.collection(getApp().globalData.collection).where({
         _openid: openid
       }).get().then(res => {
+        console.log("show:",res)
         const {
           data
         } = res
         // 存储查询到的数据
         this.setData({
           // data 为查询到的所有待办事项列表
-          todos: data,
-          // 通过 filter 函数，将待办事项分为未完成和已完成两部分
-          pending: data.filter(todo => todo.freq === 0),
-          finished: data.filter(todo => todo.freq === 1)
+          // shows: data,
         })
       })
     })
@@ -156,5 +151,15 @@ Page({
     wx.navigateTo({
       url: '../../pages/add/index',
     })
-  }
+  },
+
+  previewImage: function (e) {
+
+    const current = e.currentTarget.dataset.ix;
+    console.log("previewImage:",JSON.stringify(current))
+    wx.previewImage({
+      current: current,
+      urls: this.data.shows,
+    });
+  },
 })
