@@ -51,13 +51,13 @@ Page({
 
     getFiles: function (e) {
         wx.cloud.callFunction({
-            name: 'get_files',
+            name: 'query_files',
             success: function (res) {
-                console.log("call get_files:", res)
+                console.log("call function get_files:", res)
                 return res
             },
             fail: function (err) {
-                console.log("call get_files error:", err)
+                console.log("call function get_files error:", err)
                 return err
             }
         })
