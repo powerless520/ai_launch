@@ -19,16 +19,13 @@
 <!--</view>-->
 
 <view class="container">
-    <view class="header">
-        <text class="title">ai_launch</text>
-    </view>
-
     <view class="content">
         <!-- 文章列表 -->
-        <view class="post-item" wx:for="{{posts}}" wx:key="index">
+        <view class="post-item" wx:for="{{shows}}" wx:key="index">
             <image class="post-image" src="{{item}}" mode="aspectFill"></image>
             <view class="post-info">
                 <text class="post-title">demo_title</text>
+                <text>\n</text>
                 <text class="post-author">demo_author</text>
             </view>
         </view>

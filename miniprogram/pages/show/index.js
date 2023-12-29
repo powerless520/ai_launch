@@ -7,11 +7,12 @@ Page({
         videoUrl: 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/videos/duck.mp4',
         videoUrls: ['cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/videos/duck.mp4', 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/videos/pig.mp4']
     },
+    ims :[],
 
     onShow() {
         // this.getVideoUrl();
-        let ret = this.getFiles();
-        console.log("ret:",ret)
+        let data = this.getFiles();
+        console.log("data:",data)
     },
 
     getVideoUrl: function () {
@@ -50,15 +51,17 @@ Page({
     },
 
     getFiles: function (e) {
+        var that = this
         wx.cloud.callFunction({
             name: 'query_files',
             success: function (res) {
                 console.log("call function get_files:", res)
-                return res
+                that.setData({
+                    shows: res.result.data
+                })
             },
             fail: function (err) {
                 console.log("call function get_files error:", err)
-                return err
             }
         })
     }
