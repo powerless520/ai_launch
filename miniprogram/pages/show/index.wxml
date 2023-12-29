@@ -1,12 +1,39 @@
-<wxs module="util" src="../util.wxs" />
+<wxs module="util" src="../util.wxs"/>
+
+<!--<view class="container">-->
+<!--    <view class="waterfall-list">-->
+<!--        <block wx:for="{{shows}}" wx:key="index">-->
+<!--            <view class="waterfall-item">-->
+<!--                <image class="photo-item" src="{{item}}" data-ix="{{item}}" mode="aspectFill"-->
+<!--                       bindtap="previewImage"></image>-->
+<!--            </view>-->
+<!--        </block>-->
+<!--    </view>-->
+<!--    <view class="waterfall-list">-->
+<!--        <block wx:for="{{videoUrls}}" wx:key="index">-->
+<!--            <view class="waterfall-item">-->
+<!--                <video class="photo-item" src="{{item}}" controls></video>-->
+<!--            </view>-->
+<!--        </block>-->
+<!--    </view>-->
+<!--</view>-->
 
 <view class="container">
-  <view class="waterfall-list">
-    <block wx:for="{{shows}}" wx:key="index">
-      <view class="waterfall-item">
-        <image class="photo-item" src="{{item}}" data-ix="{{item}}" mode="aspectFill" bindtap="previewImage"></image>
-      </view>
-    </block>
-  </view>
+    <view class="header">
+        <text class="title">ai_launch</text>
+    </view>
+
+    <view class="content">
+        <!-- 文章列表 -->
+        <view class="post-item" wx:for="{{posts}}" wx:key="index">
+            <image class="post-image" src="{{item}}" mode="aspectFill"></image>
+            <view class="post-info">
+                <text class="post-title">demo_title</text>
+                <text class="post-author">demo_author</text>
+            </view>
+        </view>
+    </view>
 </view>
+
+
 

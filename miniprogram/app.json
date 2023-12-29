@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/list/index",
+    "pages/show/index",
     "pages/add/index",
     "pages/file/index",
     "pages/edit/index",
