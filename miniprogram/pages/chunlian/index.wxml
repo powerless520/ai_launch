@@ -1,0 +1,8 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+    <image class="couplet-image" src="{{coupletImage}}" mode="aspectFit"/>
+    <view class="input-container">
+        <input placeholder="请输入春联文字" bindinput="onInput"/>
+    </view>
+    <button class="generate-btn" bindtap="generateCouplet">生成春联</button>
+</view>

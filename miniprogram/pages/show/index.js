@@ -3,9 +3,9 @@
 Page({
     // 存储请求结果
     data: {
-        shows: ['cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/1.jpg', 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/2.jpg'],
-        videoUrl: 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/videos/duck.mp4',
-        videoUrls: ['cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/videos/duck.mp4', 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/videos/pig.mp4']
+        shows: [],
+        videoUrl: '',
+        videoUrls: []
     },
     ims :[],
 
@@ -42,8 +42,8 @@ Page({
 
     previewImage: function (e) {
 
-        const current = e.currentTarget.dataset.ix;
-        console.log("previewImage:", JSON.stringify(current))
+        const current = e.currentTarget.dataset.src;
+        // console.log("previewImage:", JSON.stringify(current))
         wx.previewImage({
             current: current,
             urls: this.data.shows,

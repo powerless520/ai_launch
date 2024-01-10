@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/chunlian/index",
     "pages/show/index",
     "pages/add/index",
     "pages/file/index",
