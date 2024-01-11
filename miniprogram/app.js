@@ -6,7 +6,8 @@ App({
       // 用于存储待办记录的集合名称
       collection: 'ai_launch',
       // 最大文件上传数量
-      fileLimit: 2
+      fileLimit: 2,
+      envId: '',
     }
   },
 
@@ -24,14 +25,14 @@ App({
       })
       // 装载云函数操作对象返回方法
       this.cloud = async function () {
-        if (this.flag != true) { // 如果第一次使用返回方法，还没初始化
+        if (this.flag !== true) { // 如果第一次使用返回方法，还没初始化
           await this.c1.init() // 初始化一下
           this.flag = true // 设置为已经初始化
         }
         return this.c1 // 返回 cloud 对象
       }
     } else { // 如果 ext 配置文件存在，正常云开发模式
-      if (normalinfo.length != 0 && normalinfo[0].envId != null) { // 如果文件中 envlist 存在
+      if (normalinfo.length !== 0 && normalinfo[0].envId != null) { // 如果文件中 envlist 存在
         wx.cloud.init({ // 初始化云开发环境
           traceUser: true,
           env: normalinfo[0].envId

@@ -5,4 +5,5 @@
         <input placeholder="请输入春联文字" bindinput="onInput"/>
     </view>
     <button class="generate-btn" bindtap="generateCouplet">生成春联</button>
+    <button class="generate-btn" bindtap="generatePay">发起支付</button>
 </view>
