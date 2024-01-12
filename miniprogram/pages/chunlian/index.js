@@ -126,7 +126,7 @@ Page({
                 return
             }
             wx.cloud.callFunction({
-                name: 'do_pay',
+                name: 'pay_index',
                 data: {
                     body: '春联支付',
                     outTradeNo: orderId,
