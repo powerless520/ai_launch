@@ -4,13 +4,13 @@ const payUtil = require('../../utils/pay.js')
 Page({
     data: {
         coupletText: '',
-        coupletImage: '',
-        shows: [],
+        coupletImage: 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2614.jpg',
+        shows: ['cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2614.jpg','cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2617.jpg'],
     },
 
     onShow() {
         // this.getVideoUrl();
-        this.getFiles();
+        // this.getFiles();
     },
 
     onInput: function (e) {
@@ -46,7 +46,7 @@ Page({
         // console.log(this.data.shows.length)
         let showLenth = this.data.shows.length
         console.log("showLenth:", showLenth)
-        let randomIndex = this.getRandomIndex(showLenth - 1)
+        let randomIndex = this.getRandomIndex(showLenth-1)
         console.log("randomIndex:", randomIndex)
         let imageSrc = this.data.shows[randomIndex]; // 这里假设couplet.jpg是你的春联图片
         console.log("imageSrc:", imageSrc)
