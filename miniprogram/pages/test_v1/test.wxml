@@ -1,0 +1,7 @@
+<view class="container">
+    <input class="input-box" placeholder="请输入内容" placeholder-class="input-box-1" bindinput="bindValue"
+           bindconfirm="sendRequest" value="{{inputValue}}"/>
+    <image mode="aspectFit" class="display-image" wx:if="{{showImage}}" src="{{imageUrl}}" bindtap="touchImage"
+           show-menu-by-longpress="true"/>
+    <image class="wallpaper" src="{{wallpaperUrl}}"></image>
+</view>
