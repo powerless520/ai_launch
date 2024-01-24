@@ -13,17 +13,19 @@ Page({
         this.setData({
             inputValue: e.detail.value
         });
-        console.log("bindInput inputValue:", this.data.inputValue)
     },
 
     sendRequest: function () {
-        console.log()
         // 获取输入框的值
         const inputValue = this.data.inputValue.trim();
+        console.log("sendRequest:", inputValue," to generate url")
 
         // 当输入框不为空时，显示图片
         if (inputValue !== '') {
+            // todo input value generate image url by request
             let showUrl = 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2617.jpg'
+            // request replace hardcode url
+
             this.setData({
                 showImage: true, // 显示图片
                 inputValue: '', // 清空输入框
@@ -50,11 +52,7 @@ Page({
     },
 
     touchImage: function (e) {
-        // console.log("touchImage:",e)
-        // console.log("touchImage showImage:",this.data.showImage)
-        // this.setData({
-        //   showImage: !this.data.showImage, // 显示图片
-        // })
+        // 预览模式
         wx.previewImage({
             current: this.data.imageUrl, // 当前显示图片的链接
             urls: [this.data.imageUrl],   // 需要预览的图片链接列表
