@@ -3,5 +3,6 @@
            bindconfirm="sendRequest" value="{{inputValue}}"/>
     <image mode="aspectFit" class="display-image" wx:if="{{showImage}}" src="{{imageUrl}}" bindtap="touchImage"
            show-menu-by-longpress="true"/>
-    <image class="wallpaper" src="{{wallpaperUrl}}"></image>
+    <image class="wallpaper" src="{{wallpaperUrl}}" bindtap="hiddenImage"/>
+
 </view>
