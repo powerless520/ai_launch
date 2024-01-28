@@ -1,4 +1,7 @@
 // pages/index/index.js
+import UserUtils from "../../utils/uuid.js";
+import requestUtil from "../../utils/api.js";
+
 Page({
     data: {
         inputValue: '',
@@ -15,7 +18,7 @@ Page({
         });
     },
 
-    sendRequest: function () {
+    sendRequest: function (format, data) {
         // 获取输入框的值
         const inputValue = this.data.inputValue.trim();
         console.log("sendRequest:", inputValue," to generate url")
@@ -24,13 +27,38 @@ Page({
         if (inputValue !== '') {
             // todo input value generate image url by request
             let showUrl = 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2617.jpg'
+            // let showUrl = ''
             // request replace hardcode url
+            // let sendUrl = 'http://ip-api.com/json'
+            // let sendUrl = 'http://127.0.0.1:8177/chunlian'
+            let sendUrl = 'http://146.56.237.180:8188/img' // 云服务器地址
 
-            this.setData({
-                showImage: true, // 显示图片
-                inputValue: '', // 清空输入框
-                imageUrl: showUrl, // 设置图片链接
-            });
+            // var that = this
+            requestUtil(sendUrl, 'POST', {
+                // 'uuid':UserUtils.generateRandomUserID(10),
+                'text':inputValue
+            }).then(res => {
+                // 检查 res.data 是否为有效值
+                if (res !== undefined) {
+                  let retData = JSON.parse(res)
+                  console.log("requestUtil then:", retData);
+                    this.setData({
+                        showImage: true,
+                        inputValue: '',
+                        imageUrl: retData.data,
+                    }, () => {
+                        // setData 回调中进行下一步操作
+                        console.log('imageUrl:', this.data.imageUrl);
+                    });
+                } else {
+                    console.warn("res is undefined. Not updating imageUrl.");
+                }
+              // console.log('imageUrl begin:' + this.data.imageUrl)
+              // this.data.imageUrl = res.data
+              // console.log('imageUrl end:' + this.data.imageUrl)
+            }).catch(err => {
+                console.error("requestUtil Error:", err)
+            })
         } else {
             wx.showToast({
                 title: '请输入内容', // 输入框为空时显示提示

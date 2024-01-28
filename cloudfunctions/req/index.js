@@ -18,7 +18,13 @@ exports.main = async (event, context) => {
     let options = {
         url: url,
         method: method == null ? 'GET' : method,
-        body: params,
+        timeout:30000,
+        body: JSON.stringify(params),
+    }
+    if (method === 'POST'){
+        options.headers = {
+            'Content-Type': 'application/json; charset=utf-8'
+        }
     }
 
     return await rp(options)

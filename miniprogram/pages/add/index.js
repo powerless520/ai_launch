@@ -14,7 +14,7 @@ Page({
   // 表单输入处理函数
   onTitleInput(e) {
     this.setData({
-      title: e.detail.value
+      title: e.detail.valuex3
     })
   },
 

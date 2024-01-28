@@ -5,7 +5,7 @@ Page({
     data: {
         coupletText: '',
         coupletImage: 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2614.jpg',
-        shows: ['cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2614.jpg','cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2617.jpg'],
+        shows: ['cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2614.jpg', 'cloud://dys-5ge8fwdj0c7fd7fe.6479-dys-5ge8fwdj0c7fd7fe-1323321701/imgs/WechatIMG2617.jpg'],
     },
 
     onShow() {
@@ -46,7 +46,7 @@ Page({
         // console.log(this.data.shows.length)
         let showLenth = this.data.shows.length
         console.log("showLenth:", showLenth)
-        let randomIndex = this.getRandomIndex(showLenth-1)
+        let randomIndex = this.getRandomIndex(showLenth - 1)
         console.log("randomIndex:", randomIndex)
         let imageSrc = this.data.shows[randomIndex]; // 这里假设couplet.jpg是你的春联图片
         console.log("imageSrc:", imageSrc)
@@ -119,29 +119,32 @@ Page({
 
         getApp().getOpenId().then(openid => {
             console.log("pay openid:", openid)
-            let orderId = openid.slice(0,10) + new Date().getTime().toString()
+            let orderId = openid.slice(0, 10) + new Date().getTime().toString()
             console.log("pay order_id:", orderId)
             if (orderId === undefined || orderId === '') {
                 console.log("pay order_id is empty")
                 return
             }
+            let orderModel = buildOrder(openid, 1)
+            console.log("pay orderModel:", orderModel)
             wx.cloud.callFunction({
                 name: 'pay_index',
                 data: {
                     body: '春联支付',
                     outTradeNo: orderId,
                     subMchId: '1665685145',
-                    envId:envId,
+                    envId: envId,
+                    order_model:orderModel
                 },
                 success: res => {
                     const payment = res.result.payment
                     console.log("pay success:", payment)
                     wx.requestPayment({
                         ...payment,
-                        success (res) {
+                        success(res) {
                             console.log('pay success', res)
                         },
-                        fail (err) {
+                        fail(err) {
                             console.error('pay fail', err)
                         }
                     })
@@ -151,5 +154,13 @@ Page({
         }).catch(err => {
             console.log("pay err:", err)
         })
+    },
+
+    buildOrder: function (user_id,price) {
+        let order = Order
+        order.order_id = user_id + new Date().getTime().toString()
+        order.pay_price = price
+        return order
     }
 });
+
