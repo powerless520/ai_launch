@@ -31,7 +31,7 @@ Page({
             // request replace hardcode url
             // let sendUrl = 'http://ip-api.com/json'
             // let sendUrl = 'http://127.0.0.1:8177/chunlian'
-            let sendUrl = 'http://146.56.237.180:8188/img' // 云服务器地址
+            let sendUrl = 'http://api.1zhizao.com:80/chunlian' // 云服务器地址
 
             // var that = this
             requestUtil(sendUrl, 'POST', {
